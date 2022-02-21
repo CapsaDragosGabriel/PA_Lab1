@@ -32,6 +32,16 @@ public class firstclass {
         System.out.println("Numarul final este:");
         n=n*6;
         System.out.println(n);
+
+        int suma=0;
+        while(n>0)
+        {
+            suma=n%10+suma;
+            n/=10;
+            if (suma<=9) n=suma;
+        }
+        while
+        System.out.println("Willy-nilly, this semester I will learn " + languages[result]);
     }
 }
 
