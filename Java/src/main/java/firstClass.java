@@ -5,16 +5,8 @@ public class firstClass {
     public static void sayHello() {
         System.out.println("Hello world");
     }
-
-    public static void declareArray() {
-        String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Hello world");
-        sayHello();
-        declareArray();
-     //   String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+    public static int processNumber()
+    {
         int n = (int) (Math.random() * 1_000_000);
         System.out.println(n);
         n=n*3;
@@ -41,15 +33,32 @@ public class firstClass {
         System.out.println("Numarul final este:");
         n=n*6;
         System.out.println(n);
-
+        return n;
+    }
+    public static int sumaCifre(int n)
+    {
         int suma=0;
         while(n>0)
         {
             suma=n%10+suma;
             n/=10;
-            if (suma<=9) {n=suma; break;}
-            else n=suma;
+            if (n<=0)
+            {
+                if (suma<=9) {n=suma; break;}
+                else if (n==0) n=suma;
+            }
         }
+        return n;
+    }
+    public static void main(String[] args) {
+        System.out.println("Hello world");
+        sayHello();
+        String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+
+        int n=processNumber();
+        System.out.println("numarul procesat este: "+n);
+        int rez=sumaCifre(n);
+        n=rez;
         System.out.println(n);
 
         System.out.println("Willy-nilly, this semester I will learn " + languages[n]);
