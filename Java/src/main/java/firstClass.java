@@ -1,8 +1,12 @@
 public class firstClass {
 
-    public static void sayhello(String[] args) {
+    public static void sayHello() {
         System.out.println("Hello world");
     }
+    public static void declareArray() {
+        String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+    }
+
     public static void main(String[] args) {
         System.out.println("Hello world");
         String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
@@ -11,7 +15,7 @@ public class firstClass {
         n=n*3;
         System.out.println(n);
 
-        String binaryString="1010";
+        String binaryString="10101";
         int decimal=Integer.parseInt(binaryString,2);
         System.out.println("Numarul 1010 in binar este:");
         System.out.println(decimal);
