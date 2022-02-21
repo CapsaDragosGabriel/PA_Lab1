@@ -5,6 +5,7 @@ public class firstClass {
     public static void sayHello() {
         System.out.println("Hello world");
     }
+    
     public static void declareArray() {
         String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
     }
@@ -21,7 +22,7 @@ public class firstClass {
 
         String binaryString="10101";
         int decimal=Integer.parseInt(binaryString,2);
-        System.out.println("Numarul 1010 in binar este:");
+        System.out.println("Numarul 10101 in binar este:");
         System.out.println(decimal);
 
         n=n+decimal;
