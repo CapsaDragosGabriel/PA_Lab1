@@ -5,7 +5,7 @@ public class firstClass {
     public static void sayHello() {
         System.out.println("Hello world");
     }
-    
+
     public static void declareArray() {
         String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
     }
