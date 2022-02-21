@@ -1,3 +1,5 @@
+import javax.lang.model.type.DeclaredType;
+
 public class firstClass {
 
     public static void sayHello() {
@@ -9,7 +11,9 @@ public class firstClass {
 
     public static void main(String[] args) {
         System.out.println("Hello world");
-        String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+        sayHello();
+        declareArray();
+     //   String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
         int n = (int) (Math.random() * 1_000_000);
         System.out.println(n);
         n=n*3;
