@@ -38,14 +38,16 @@ public class firstClass {
     public static int sumaCifre(int n)
     {
         int suma=0;
-        while(n>0 && (n!=suma))
+
+        while(n>0)
         {
             suma=n%10+suma;
             n/=10;
             if (n<=0)
             {
-                if (suma<=9) {n=suma;suma=0; break;}
-                else if (n==0) n=suma;
+
+               if (suma<=9) {n=suma;break;}
+               else {n=suma;suma=0;}
             }
         }
         return n;
