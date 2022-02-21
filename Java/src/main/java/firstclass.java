@@ -1,8 +1,8 @@
-import java.sql.SQLOutput;
+public class firstClass {
 
-public class firstclass {
-
-
+    public static void sayhello(String[] args) {
+        System.out.println("Hello world");
+    }
     public static void main(String[] args) {
         System.out.println("Hello world");
         String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
@@ -38,10 +38,12 @@ public class firstclass {
         {
             suma=n%10+suma;
             n/=10;
-            if (suma<=9) n=suma;
+            if (suma<=9) {n=suma; break;}
+            else n=suma;
         }
-        while
-        System.out.println("Willy-nilly, this semester I will learn " + languages[result]);
+        System.out.println(n);
+
+        System.out.println("Willy-nilly, this semester I will learn " + languages[n]);
     }
 }
 
