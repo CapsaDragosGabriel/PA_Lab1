@@ -52,16 +52,14 @@ public class firstClass {
         }
         return n;
     }
+
     public static void main(String[] args) {
         System.out.println("Hello world");
         sayHello();
         String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
 
         int n=processNumber();
-        System.out.println("numarul procesat este: "+n);
-        int rez=sumaCifre(n);
-        n=rez;
-        System.out.println(n);
+         n=sumaCifre(n);
 
         System.out.println("Willy-nilly, this semester I will learn " + languages[n]);
     }
