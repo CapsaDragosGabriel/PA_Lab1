@@ -1,8 +1,10 @@
+import java.util.*;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Homework {
+    static int k=0;
+    static int maxi=0;
     private static class List
     {
        public String word;
@@ -86,6 +88,40 @@ public class Homework {
         }
         return word.toString();
     }
+    static void dfs(int start,boolean adjMatrix[][], boolean[] visited)
+    {
+        // Print the current node
+        System.out.print(start + " ");
+        k++;
+        // Set current node as visited
+        visited[start] = true;
+
+        // For every node of the graph
+        for (int i = 0; i < adjMatrix[start].length; i++) {
+
+            // If some node is adjacent to the current node
+            // and it has not already been visited
+            if (adjMatrix[start][i] == true && (!visited[i])) {
+                dfs(i,adjMatrix, visited);
+            }
+        }
+    }
+    static int maxEdges(boolean adjMatrix[][],int n)
+    {
+        int res=0;
+        boolean visited[]=new boolean[n];
+        for(int i=0;i<n;i++)
+        {
+            if (visited[i]==false)
+            {
+                dfs(i,adjMatrix, visited);
+                if (maxi<k && adjMatrix[i][n-1]==true){maxi=k;
+                    };
+                k=0;
+            }
+        }
+        return maxi;
+    }
     public static void main(String args[]) {
         long startTime = System.nanoTime();
         Homework app = new Homework();
@@ -135,8 +171,10 @@ public class Homework {
 
             System.out.println("Execution time in nanoseconds: " + timeElapsed);
             System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
-
-
+            boolean[] visited= new boolean[n];
+            maxEdges(adjMatrix,n);
+           // dfs(0,adjMatrix,visited);
+            System.out.println("The largest possible k is " + maxi);
         }
 
     }
