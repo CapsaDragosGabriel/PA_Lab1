@@ -115,8 +115,8 @@ public class Homework {
             if (visited[i]==false)
             {
                 dfs(i,adjMatrix, visited);
-                if (maxi<k && adjMatrix[i][n-1]==true){maxi=k;
-                    };
+                if (maxi<k && adjMatrix[i][n-1]==true && k>=3 ) maxi=k;
+
                 k=0;
             }
         }
