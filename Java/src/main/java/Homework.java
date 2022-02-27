@@ -48,8 +48,8 @@ public class Homework {
         else if (CheckInput(str)==2)
             System.out.println("The alphabet contains whitespaces.");
         else{
-           String words;
-           words=app.createRandomWord(p,arr);
+           String[n] words;
+           words=app.createRandomWord(p,str);
             System.out.println(words);
         }
 
@@ -62,7 +62,7 @@ public class Homework {
 
 
     }
-    private String createRandomWord(int len, char[] alphabet) {
+    private String createRandomWord(int len, String alphabet) {
         StringBuilder word = new StringBuilder();
         Random rand = new Random();
 
@@ -70,7 +70,7 @@ public class Homework {
 
         for (int i = 0; i < len; i++) {
             int k = rand.nextInt(alphabet.length());
-            word.append(alphabet[k]);
+            word.append(alphabet.charAt(k));
         }
         return word.toString();
     }
