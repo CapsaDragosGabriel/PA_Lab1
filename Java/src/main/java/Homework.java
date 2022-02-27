@@ -6,13 +6,20 @@ public class Homework {
     private static class List
     {
        public String word;
-       public  String[] neighbours;
+      // public StringBuilder[] neighbours;
+        public String[] neighbours = {"NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL"};
         public int number=0;
     }
     public static void printList(List listToPrint)
     {
-        System.out.println("The word "+listToPrint.word+" has "
-                +listToPrint.number+" neighbours: "+listToPrint.neighbours);
+        System.out.println();
+        System.out.print("The word "+listToPrint.word+" has "
+                +listToPrint.number+" neighbours: ");
+        for (int i=0;i< listToPrint.number;i++)
+        {
+            System.out.print(listToPrint.neighbours[i]+" ");
+        }
+        //System.out.println();
     }
     public static int CheckInput(char[] toCheck)
     {
@@ -50,26 +57,40 @@ public class Homework {
     }
     public static void FillList(int n,String[] words, boolean adjMatrix[][])
     {
-        int i,j;
-        
+       int i,j;
+
         for (i=0;i<n;i++)
-        {
-            for (j=i+1;j<n;j++)
+        { List adjList= new List();
+           adjList.word=words[i];
+            for (j=0;j<n;j++)
             {
-                if (adjMatrix[i][j]==true)
+                if (adjMatrix[i][j]==true && i!=j)
                 {
-                    adjList[i].neighbours[adjList[i].number]=words[j];
-                    adjList[i].word=words[i];
-                    adjList[i].number++;
-              //      adjList[j].neighbours[adjList[j].number]=words[i];
-                    adjList[j].word=words[j];
-                    adjList[j].number++;
+                    adjList.neighbours[adjList.number]=words[j];
+                   adjList.number++;
                 }
             }
-
+        printList(adjList);
         }
+        /*for (int i = 0; i < n; i++) {
+            List myList = new List();
+            myList.word = words[i];
+            int count = 0;
+            for (int j = 0; j < n; j++) {
+                if (adjMatrix[i][j] == true && i != j) {
+                    myList.neighbours[count] = words[j];
+                    count++;
+                }
+            }
+            System.out.print(myList.word + ": ");
+            for (int j = 0; j < count; j++) {
+                System.out.print(myList.neighbours[j] + " ");
+            }
+            System.out.println();
+        }*/
     }
     public static void main(String args[]) {
+        long startTime = System.nanoTime();
         Homework app = new Homework();
         if (args.length < 3) {
             System.out.println(
@@ -105,9 +126,9 @@ public class Homework {
 
 
             FillList(n,words,adjMatrix);
+            
 
-
-         //   printList(adjList[0]);
+         //   printList(List[0]);
             //System.out.println(alphabet);
         }
         /*Homework app = new Homework();
