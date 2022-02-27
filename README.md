@@ -10,3 +10,7 @@ Primul laborator
   -am multiplicat rezultatul cu 6
 -am facut suma cifrelor in mod repetat pana cand am obtinut un numar dintr-o cifra 
 -am afisat pe ecran mesajul :"Willy-nilly, this semester I will learn " si am afisat languages[] de numarul respectiv
+
+
+Homework:\n
+-am realizat functia CheckInput pentru a valida arguments ( sa nu se repete literele din multime )
