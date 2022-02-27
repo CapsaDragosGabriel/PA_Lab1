@@ -13,6 +13,7 @@ public class Homework {
     public static void printList(List listToPrint)
     {
         System.out.println();
+        System.out.println();
         System.out.print("The word "+listToPrint.word+" has "
                 +listToPrint.number+" neighbours: ");
         for (int i=0;i< listToPrint.number;i++)
@@ -55,7 +56,7 @@ public class Homework {
             }
         }
     }
-    public static void FillList(int n,String[] words, boolean adjMatrix[][])
+    public static void FillList(int n,String[] words, boolean adjMatrix[][],boolean doPrint)
     {
        int i,j;
 
@@ -70,24 +71,18 @@ public class Homework {
                    adjList.number++;
                 }
             }
-        printList(adjList);
+        if(doPrint==true)printList(adjList);
         }
-        /*for (int i = 0; i < n; i++) {
-            List myList = new List();
-            myList.word = words[i];
-            int count = 0;
-            for (int j = 0; j < n; j++) {
-                if (adjMatrix[i][j] == true && i != j) {
-                    myList.neighbours[count] = words[j];
-                    count++;
-                }
-            }
-            System.out.print(myList.word + ": ");
-            for (int j = 0; j < count; j++) {
-                System.out.print(myList.neighbours[j] + " ");
-            }
-            System.out.println();
-        }*/
+
+    }
+    private String createRandomWord(int len, char[] alphabet) {
+        StringBuilder word = new StringBuilder();
+        Random rand = new Random();
+        for (int i = 0; i < len; i++) {
+            int k = rand.nextInt(alphabet.length);
+            word.append(alphabet[k]);
+        }
+        return word.toString();
     }
     public static void main(String args[]) {
         long startTime = System.nanoTime();
@@ -115,18 +110,22 @@ public class Homework {
             boolean[][] adjMatrix=new boolean[n][n];
 
            Neighbours(n,p,words,adjMatrix);
-
-            for (int i=0;i<n;i++) {
+//the boolean matrix
+          /*  for (int i=0;i<n;i++) {
                 for (int j=0;j<n;j++)
                 System.out.print(adjMatrix[i][j]+" ");
                 System.out.println();
-            }
-            for (int i=0;i<n;i++)
-                System.out.print(words[i]+" ");
+            }*/
+           for (int i=0;i<n;i++)
+                System.out.print(words[i]+", ");
 
 
-            FillList(n,words,adjMatrix);
-            
+            FillList(n,words,adjMatrix,false);
+            long endTime = System.nanoTime();
+            long timeElapsed = endTime - startTime;
+
+            System.out.println("Execution time in nanoseconds: " + timeElapsed);
+            System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
 
          //   printList(List[0]);
             //System.out.println(alphabet);
@@ -162,15 +161,7 @@ public class Homework {
     }
 
 
-    private String createRandomWord(int len, char[] alphabet) {
-        StringBuilder word = new StringBuilder();
-        Random rand = new Random();
-        for (int i = 0; i < len; i++) {
-            int k = rand.nextInt(alphabet.length);
-            word.append(alphabet[k]);
-        }
-        return word.toString();
-    }
+
     /*private String createRandomWord(int len, String alphabet) {
         StringBuilder word = new StringBuilder();
         Random rand = new Random();
