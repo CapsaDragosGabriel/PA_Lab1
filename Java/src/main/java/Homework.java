@@ -6,24 +6,24 @@ public class Homework {
     private static class List
     {
        public String word;
-      
+
         //altfel nu mergea
         public String[] neighbours = {"NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL","NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL", "NULL"};
         public int number=0;
     }
-    public static void printList(List listToPrint)
+    public static void printList(List listToPrint)//pentru afisarea structurii de date
     {
-        System.out.println();
-        System.out.println();
+
         System.out.print("The word "+listToPrint.word+" has "
                 +listToPrint.number+" neighbours: ");
         for (int i=0;i< listToPrint.number;i++)
         {
             System.out.print(listToPrint.neighbours[i]+" ");
         }
+        System.out.println();
         //System.out.println();
     }
-    public static int CheckInput(char[] toCheck)
+    public static int CheckInput(char[] toCheck)//pentru validarea inputului
     {
         int err=0;
         int i=0;
@@ -39,7 +39,7 @@ public class Homework {
     return err;
     }
 
-    public static void Neighbours(int n,int p,String[] words,boolean adjMatrix[][]){
+    public static void Neighbours(int n,int p,String[] words,boolean adjMatrix[][]){//pentru matricea de adiacenta
         boolean nbrs=false;
 
         for (int i=0;i<n;i++) {
@@ -88,14 +88,21 @@ public class Homework {
     public static void main(String args[]) {
         long startTime = System.nanoTime();
         Homework app = new Homework();
-        if (args.length < 3) {
+        if (args.length < 3) {//verificam sa fie cel putin 3 argumente
             System.out.println(
                     "Usage: number, number, one or more characters");
             System.exit(-1);
         }
-        int n = Integer.parseInt(args[0]);
-        int p = Integer.parseInt(args[1]);
-        int m = args.length - 2;
+        int n=0,p=0,m=0;
+        try {
+            n = Integer.parseInt(args[0]);
+            p = Integer.parseInt(args[1]);
+            m = args.length - 2;
+        }
+        catch  (Exception e)
+        {
+            System.out.println("N and P are supposed to be integers");
+        }
         char alphabet[] = new char[m];
         for(int i=0; i<m; i++) {
             alphabet[i] = args[i + 2].charAt(0);
@@ -118,62 +125,18 @@ public class Homework {
                 System.out.println();
             }*/
            for (int i=0;i<n;i++)
-                System.out.print(words[i]+", ");
-
-
-            FillList(n,words,adjMatrix,false);
+                System.out.print(words[i]+" ");
+            System.out.println();
+            //true daca dorim sa afisam structurile, false in caz contrar
+            FillList(n,words,adjMatrix,true);
             long endTime = System.nanoTime();
             long timeElapsed = endTime - startTime;
 
             System.out.println("Execution time in nanoseconds: " + timeElapsed);
             System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
 
-         //   printList(List[0]);
-            //System.out.println(alphabet);
+
         }
-        /*Homework app = new Homework();
-        Scanner myObj = new Scanner(System.in);
-
-        System.out.println("n = ");
-        int n = Integer.parseInt(myObj.nextLine());
-
-        System.out.println("p = ");
-        int p = Integer.parseInt(myObj.nextLine());
-
-        System.out.println("alphabet = ");
-        String str=myObj.nextLine();
-        String[] arr=str.split("");
-
-        if (CheckInput(str)==1)
-            System.out.println("The alphabet contains duplicates.");
-        else if (CheckInput(str)==2)
-            System.out.println("The alphabet contains whitespaces.");
-        else{
-           String[] words = new String[100];
-           for (int i=0;i<n;i++)
-           {words[i]=app.createRandomWord(p,str);}
-
-
-           for (int i=0;i<n;i++)
-            System.out.println(words[i]);
-        }
-*/
 
     }
-
-
-
-    /*private String createRandomWord(int len, String alphabet) {
-        StringBuilder word = new StringBuilder();
-        Random rand = new Random();
-
-
-
-        for (int i = 0; i < len; i++) {
-            int k = rand.nextInt(alphabet.length());
-            word.append(alphabet.charAt(k));
-        }
-        return word.toString();
-    }
-*/
 }
