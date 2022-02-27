@@ -1,30 +1,116 @@
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class Homework {
-    public static int CheckInput(String toCheck)
+    private static class List
+    {
+       public String word;
+       public  String[] neighbours;
+        public int number=0;
+    }
+    public static void printList(List listToPrint)
+    {
+        System.out.println("The word "+listToPrint.word+" has "
+                +listToPrint.number+" neighbours: "+listToPrint.neighbours);
+    }
+    public static int CheckInput(char[] toCheck)
     {
         int err=0;
         int i=0;
         int j=1;
-        for (i=0;i<toCheck.length()-1 && err==0 ;i++)
+        for (i=0;i<toCheck.length-1 && err==0 ;i++)
         {
-            for (j=i+1;j<toCheck.length() && err==0;j++)
+            for (j=i+1;j<toCheck.length && err==0;j++)
             {
-                if(toCheck.charAt(i)==toCheck.charAt(j))
+                if(toCheck[i]==toCheck[j])
                     err=1;
-                else if (toCheck.charAt(i)==' ')
-                    err=2;
-                else if (toCheck.charAt(j)==' ')
-                    err=2;
             }
         }
     return err;
     }
 
-    public static void main(String args[]) {
+    public static void Neighbours(int n,int p,String[] words,boolean adjMatrix[][]){
+        boolean nbrs=false;
 
+        for (int i=0;i<n;i++) {
+            for (int j = i; j < n; j++) {
+                nbrs=false;
+                for (int k=0;k<p;k++)
+                {
+                    if(words[j].indexOf(words[i].charAt(k))!=-1)
+                        //indexOf cauta un caracter si returneaza pozitia lui,-1 daca nu-l gaseste
+                        nbrs=true;
+                }
+
+                adjMatrix[i][j]=nbrs;
+                adjMatrix[j][i]=nbrs;
+            }
+        }
+    }
+    public static void FillList(int n,String[] words, boolean adjMatrix[][])
+    {
+        int i,j;
+        
+        for (i=0;i<n;i++)
+        {
+            for (j=i+1;j<n;j++)
+            {
+                if (adjMatrix[i][j]==true)
+                {
+                    adjList[i].neighbours[adjList[i].number]=words[j];
+                    adjList[i].word=words[i];
+                    adjList[i].number++;
+              //      adjList[j].neighbours[adjList[j].number]=words[i];
+                    adjList[j].word=words[j];
+                    adjList[j].number++;
+                }
+            }
+
+        }
+    }
+    public static void main(String args[]) {
         Homework app = new Homework();
+        if (args.length < 3) {
+            System.out.println(
+                    "Usage: number, number, one or more characters");
+            System.exit(-1);
+        }
+        int n = Integer.parseInt(args[0]);
+        int p = Integer.parseInt(args[1]);
+        int m = args.length - 2;
+        char alphabet[] = new char[m];
+        for(int i=0; i<m; i++) {
+            alphabet[i] = args[i + 2].charAt(0);
+        }
+        if (CheckInput(alphabet)==1)
+            System.out.println("The alphabet contains duplicates.");
+        else
+        {
+            String[] words = new String[n];
+            for (int i=0;i<n;i++)//creates n words with random p letters
+            {words[i]=app.createRandomWord(p,alphabet);}
+
+            boolean[][] adjMatrix=new boolean[n][n];
+
+           Neighbours(n,p,words,adjMatrix);
+
+            for (int i=0;i<n;i++) {
+                for (int j=0;j<n;j++)
+                System.out.print(adjMatrix[i][j]+" ");
+                System.out.println();
+            }
+            for (int i=0;i<n;i++)
+                System.out.print(words[i]+" ");
+
+
+            FillList(n,words,adjMatrix);
+
+
+         //   printList(adjList[0]);
+            //System.out.println(alphabet);
+        }
+        /*Homework app = new Homework();
         Scanner myObj = new Scanner(System.in);
 
         System.out.println("n = ");
@@ -36,7 +122,7 @@ public class Homework {
         System.out.println("alphabet = ");
         String str=myObj.nextLine();
         String[] arr=str.split("");
-        
+
         if (CheckInput(str)==1)
             System.out.println("The alphabet contains duplicates.");
         else if (CheckInput(str)==2)
@@ -49,23 +135,22 @@ public class Homework {
 
            for (int i=0;i<n;i++)
             System.out.println(words[i]);
-
-
-
-
-
         }
-
-
-
-       // char alphabet[] = {'A', 'C', 'G', 'T'};
-      /*  String word = app.createRandomWord(7, alphabet);
-        System.out.println(word);
 */
 
-
     }
-    private String createRandomWord(int len, String alphabet) {
+
+
+    private String createRandomWord(int len, char[] alphabet) {
+        StringBuilder word = new StringBuilder();
+        Random rand = new Random();
+        for (int i = 0; i < len; i++) {
+            int k = rand.nextInt(alphabet.length);
+            word.append(alphabet[k]);
+        }
+        return word.toString();
+    }
+    /*private String createRandomWord(int len, String alphabet) {
         StringBuilder word = new StringBuilder();
         Random rand = new Random();
 
@@ -77,5 +162,5 @@ public class Homework {
         }
         return word.toString();
     }
-
+*/
 }
