@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Homework {
     static int k=0;
-    static int maxi=0;
+
     private static class List
     {
        public String word;
@@ -88,35 +88,44 @@ public class Homework {
         }
         return word.toString();
     }
-    static void dfs(int start,boolean adjMatrix[][], boolean[] visited)
+    static void dfs(int start,int n,boolean adjMatrix[][], boolean[] visited)
     {
-        // Print the current node
-        System.out.print(start + " ");
+        //in k am ales sa tin lungimea curenta
         k++;
-        // Set current node as visited
+
         visited[start] = true;
 
-        // For every node of the graph
-        for (int i = 0; i < adjMatrix[start].length; i++) {
+        // trec prin noduri
+        for (int j = 0; j < n; j++) {
 
-            // If some node is adjacent to the current node
-            // and it has not already been visited
-            if (adjMatrix[start][i] == true && (!visited[i])) {
-                dfs(i,adjMatrix, visited);
+            // verific daca am nod adiacent nevizitat
+            if (adjMatrix[start][j] == true && (!visited[j])) {
+                dfs(j,n,adjMatrix, visited);
             }
         }
     }
     static int maxEdges(boolean adjMatrix[][],int n)
     {
-        int res=0;
+        //in maxi tin minte lungimea maxima
+        int maxi=0;
         boolean visited[]=new boolean[n];
         for(int i=0;i<n;i++)
         {
             if (visited[i]==false)
             {
-                dfs(i,adjMatrix, visited);
-                if (maxi<k && adjMatrix[i][n-1]==true && k>=3 ) maxi=k;
 
+                dfs(i,n,adjMatrix, visited);
+                int p=0;
+                int t=0;
+                //caut ultimul nod vizitat
+                while (t<n){if (visited[t])p=t;
+                t++;}
+                //si verific sa fie vecin si cu primul numar
+                if (maxi<k && adjMatrix[p][i]==true ) maxi=k;
+               // System.out.println("Current k"+k+" current max "+maxi);
+
+                visited=null;
+                visited=new boolean[n];
                 k=0;
             }
         }
@@ -172,9 +181,9 @@ public class Homework {
             System.out.println("Execution time in nanoseconds: " + timeElapsed);
             System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
             boolean[] visited= new boolean[n];
-            maxEdges(adjMatrix,n);
+            int l=maxEdges(adjMatrix,n);
            // dfs(0,adjMatrix,visited);
-            System.out.println("The largest possible k is " + maxi);
+            System.out.println("The largest possible k is " + l);
         }
 
     }

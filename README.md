@@ -32,3 +32,16 @@ Homework:
 
 -pentru a crea listele de adiacenta am folosit matricea creata anterior. Aceasta functie are parametrul doPrint pe care-l putem modifica daca este nevoie
 
+Bonus:
+
+-am incercat o parcurgere dfs pe matricea de adiacenta booleana
+
+-plec din fiecare nod si tin minte secventa vizitata
+
+-dupa ce nu mai pot vizita niciun nod ma duc in nodul cel mai mare si verific daca-l pot vizita pe primul
+
+-daca da, salvez noul maxim
+
+-programul ar mai putea fi optimizat evitand parcurgeri dfs echivalente
+de ex, daca am parcurs 0 1 2 sa nu parcurg si 1 2 0
+
