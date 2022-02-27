@@ -30,5 +30,5 @@ Homework:
 
 -am creat tipul de date List care contine word= denumirea cuvantului, neighbours= vecinii cuvantului si number=numerul vecinilor
 
--pentru a crea listele de adiacenta am folosit matricea creata anterior
+-pentru a crea listele de adiacenta am folosit matricea creata anterior. Aceasta functie are parametrul doPrint pe care-l putem modifica daca este nevoie
 
