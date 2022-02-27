@@ -36,13 +36,7 @@ public class Homework {
         System.out.println("alphabet = ");
         String str=myObj.nextLine();
         String[] arr=str.split("");
-
-        /*System.out.println("");
-        System.out.println("n="+n);
-        System.out.println("p="+p);
-        for(String character : arr)
-            System.out.print(character+" ");
-        */
+        
         if (CheckInput(str)==1)
             System.out.println("The alphabet contains duplicates.");
         else if (CheckInput(str)==2)
@@ -55,6 +49,11 @@ public class Homework {
 
            for (int i=0;i<n;i++)
             System.out.println(words[i]);
+
+
+
+
+
         }
 
 
