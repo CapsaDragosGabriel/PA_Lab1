@@ -48,9 +48,13 @@ public class Homework {
         else if (CheckInput(str)==2)
             System.out.println("The alphabet contains whitespaces.");
         else{
-           String[n] words;
-           words=app.createRandomWord(p,str);
-            System.out.println(words);
+           String[] words = new String[100];
+           for (int i=0;i<n;i++)
+           {words[i]=app.createRandomWord(p,str);}
+
+
+           for (int i=0;i<n;i++)
+            System.out.println(words[i]);
         }
 
 
