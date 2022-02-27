@@ -20,6 +20,8 @@ Primul laborator
 -am afisat pe ecran mesajul :"Willy-nilly, this semester I will learn " si am afisat languages[] de numarul respectiv
 
 Homework:
+
+
 -am realizat functia CheckInput pentru a valida arguments ( sa nu se repete literele din multime )
 
 -am preluat functia createRandomWord de pe slide-uri
