@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Homework {
     static int k=0;
-    
+
     private static class List
     {
        public String word;
 
         //altfel nu mergea, imi dadea nullpointer exception, cred ca ar fi trebuit sa folosesc StringBuilder
         //dar mi-a fost mai usor asa
-        public String[] neighbours = new String[10000];
+        public String[] neighbours = new String[30000];
         public int number=0;
     }
     public static void printList(List listToPrint)//pentru afisarea structurii de date
@@ -171,7 +171,7 @@ public class Homework {
                 System.out.print(words[i]+" ");
             System.out.println();
             //true daca dorim sa afisam structurile, false in caz contrar
-            FillList(n,words,adjMatrix,true);
+            FillList(n,words,adjMatrix,false);
 
 
             long endTime = System.nanoTime();
@@ -180,9 +180,9 @@ public class Homework {
             System.out.println("Execution time in nanoseconds: " + timeElapsed);
             System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
             boolean[] visited= new boolean[n];
-            int l=maxEdges(adjMatrix,n);
+          //  int l=maxEdges(adjMatrix,n);
            // dfs(0,adjMatrix,visited);
-            System.out.println("The largest possible k is " + l);
+         //   System.out.println("The largest possible k is " + l);
         }
 
     }
