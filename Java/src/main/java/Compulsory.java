@@ -1,6 +1,4 @@
-import javax.lang.model.type.DeclaredType;
-
-public class firstClass {
+public class Compulsory {
 
     public static void sayHello() {
         System.out.println("Hello world");
