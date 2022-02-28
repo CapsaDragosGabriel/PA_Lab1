@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Homework {
     static int k=0;
-
+    
     private static class List
     {
        public String word;
