@@ -88,6 +88,7 @@ public class Homework {
         }
         return word.toString();
     }
+    //pentru bonus
     static void dfs(int start,int n,boolean adjMatrix[][], boolean[] visited)
     {
         //in k am ales sa tin lungimea curenta
@@ -104,6 +105,7 @@ public class Homework {
             }
         }
     }
+    //pentru bonus
     static int maxEdges(boolean adjMatrix[][],int n)
     {
         //in maxi tin minte lungimea maxima
@@ -164,12 +166,7 @@ public class Homework {
             boolean[][] adjMatrix=new boolean[n][n];
 
            Neighbours(n,p,words,adjMatrix);
-//the boolean matrix
-          /*  for (int i=0;i<n;i++) {
-                for (int j=0;j<n;j++)
-                System.out.print(adjMatrix[i][j]+" ");
-                System.out.println();
-            }*/
+
            for (int i=0;i<n;i++)
                 System.out.print(words[i]+" ");
             System.out.println();
